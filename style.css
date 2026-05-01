@@ -1,0 +1,314 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.navbar {
+    width: 100%;
+    min-height: 85px;
+    padding: 18px 35px;
+    background-color: #2b2b31;
+    color: #f5efe6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    font-family: Georgia, 'Times New Roman', serif;
+    border-bottom: 1px solid #c8a96a;
+}
+
+.logo a {
+    color: #f5efe6;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+}
+
+.nav-links li a {
+    color: #f5efe6;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-links li a:hover {
+    color: #c8a96a;
+}
+
+.nav-auth {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.nav-auth a {
+    color: #f5efe6;
+    text-decoration: none;
+    font-size: 13px;
+    border: 1px solid #c8a96a;
+    padding: 10px 14px;
+    transition: 0.3s ease;
+}
+
+.nav-auth a:hover {
+    background-color: #c8a96a;
+    color: #0f0f0f;
+}
+
+.welcome-text {
+    color: #c8a96a;
+    font-size: 14px;
+}
+
+.categories-section {
+    padding: 35px 8% 80px;
+    background-color: #f5f1e8;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 75px;
+    padding-top: 10px;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+.section-title::before {
+    content: "MAISON ÉLÉGANCE";
+    display: block;
+    font-size: 13px;
+    letter-spacing: 5px;
+    color: #c8a96a;
+    margin-bottom: 18px;
+    font-weight: bold;
+}
+
+.section-title h2 {
+    font-size: 50px;
+    color: #2b2b31;
+    margin: 0 0 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.section-title h2::after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 2px;
+    background-color: #c8a96a;
+    margin: 22px auto 0;
+}
+
+.section-title p {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #666;
+}
+
+.category-line {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+    margin-bottom: 70px;
+}
+
+.category-line.reverse {
+    flex-direction: row-reverse;
+}
+
+.category-image {
+    width: 58%;
+    height: 330px;
+    border-radius: 22px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+.normal-image {
+    background-image: url("images/normal-car.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 60%;
+}
+
+.sport-image {
+    background-image: url("images/sport-car.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 65%;
+}
+
+.collection-image {
+    background-image: url("images/collection-car.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 65%;
+}
+
+.category-text {
+    width: 42%;
+    background-color: #ffffff;
+    padding: 42px;
+    border-left: 3px solid #c8a96a;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+}
+
+.category-text h3 {
+    font-size: 36px;
+    color: #2b2b31;
+    margin: 0 0 18px;
+}
+
+.category-text p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.category-text a {
+    display: inline-block;
+    text-decoration: none;
+    color: #2b2b31;
+    border: 1px solid #c8a96a;
+    padding: 12px 26px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+.category-text a:hover {
+    background-color: #c8a96a;
+    color: #111;
+}
+
+@media screen and (max-width: 900px) {
+    .category-line,
+    .category-line.reverse {
+        flex-direction: column;
+    }
+
+    .category-image,
+    .category-text {
+        width: 100%;
+    }
+
+    .category-image {
+        height: 280px;
+    }
+
+    .section-title h2 {
+        font-size: 34px;
+    }
+}
+
+.auth-section {
+    min-height: 80vh;
+    background-color: #f5f1e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+.auth-box {
+    width: 430px;
+    background-color: #ffffff;
+    padding: 45px;
+    border-left: 3px solid #c8a96a;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+}
+
+.auth-box h2 {
+    font-size: 34px;
+    color: #2b2b31;
+    margin-bottom: 12px;
+}
+
+.auth-box p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2b2b31;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d1c7b7;
+    background-color: #faf8f2;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #2b2b31;
+    color: #f5efe6;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+.auth-btn:hover {
+    background-color: #c8a96a;
+    color: #111;
+}
+
+.auth-message {
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: #f1eadc;
+    border-left: 3px solid #c8a96a;
+    color: #2b2b31;
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.auth-link a {
+    color: #2b2b31;
+    font-weight: bold;
+}
