@@ -1,14 +1,13 @@
 <?php
-$servername = "localhost";
-$username = "root"; 
-$password = "";     
-$dbname = "ecommerce_database";
+    $servername = "localhost";
+    $user = "root";
+    $password = "";
+    $dbname = "maison_elegance";
 
+    $conn = mysqli_connect($servername, $user, $password, $dbname);
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-
-if (!$conn) {
-    die("Database connection failed: " . mysqli_connect_error());
-}
+        if(!$conn){
+            die("Connection failed " . mysqli_connect_error());
+        }
+    mysqli_set_charset($conn, "utf8");
 ?>
