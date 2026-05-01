@@ -1,4 +1,4 @@
-
+<?php include 'navbar.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +8,7 @@
  <style>
    
     body { 
-            background-color: #8a9aaa;
+            background-color: #b7cbdf;
             font-family: sans-serif;
         }
       
@@ -24,8 +24,8 @@
         }
     .carousel-fan {
             position: relative;
-            width: 300px;
-            height: 400px;
+            width: 580px;
+            height: 780px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -34,8 +34,8 @@
        
      .item {
             position: absolute;
-            width: 280px;
-            height: 380px;
+            width: 400px;
+            height: 600px;
             object-fit: cover;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
@@ -68,11 +68,11 @@
             z-index: 1;
         }
     .start {
-        width: 30%;
-        padding: 10px 30px;
+        width: 10%;
+        padding: 20px 60px;
         background-color:  #03033d;
         color: #f1f3f8;
-        border: none;
+        border-redius :100px;
         font-size: 20px;
         font-weight: bold;
         letter-spacing: 1px;
@@ -82,8 +82,6 @@
         margin-top:40px;
         margin-left: auto;
         margin-right: auto;
-        width: 60px; 
-        font-family: Georgia, 'Times New Roman', serif;
     }
 
     .start:hover{
@@ -105,26 +103,30 @@
     }
    .g{
         margin-top: 100px;
+     font-family: Georgia, 'Times New Roman', serif;
+   }
+   .a{
+     font-family: Georgia, 'Times New Roman', serif;
    }
     </style>
 </head>
 <body>
 <h1 class="s" align="center">bienvenue à Maison Élégance  </h1>
-    <h2 align="center">  Votre prochaine voiture vous attend ici ! </h2>
-      <p align="center">  Nous ne vendons pas seulement des voitures - nous réalisons votre passion avec qualité, 
+    <h2 class="a" align="center">  Votre prochaine voiture vous attend ici ! </h2>
+      <p  class="a" align="center">  Nous ne vendons pas seulement des voitures - nous réalisons votre passion avec qualité, 
 transparence et des garanties qui vous assurent 
 une tranquillité totale dès le premier jour. </p>
         
     <div class="carousel-container">
-        <div class="carousel-fan" id="carouselFan">
-                <img src="ph/photo1.jpg" class="item left">
-                <img src="ph/photo2.jpg" class="item left">
-                <img src="ph/photo3.jpg" class="item left">
-                <img src="ph/photo4.jpg" class="item active">
+        <div class="carousel-fan" >
+                <img  src="ph/photo1.jpg" class="item left">
+                <img  src="ph/photo2.jpg" class="item left">
+                <img  src="ph/photo3.jpg" class="item left">
+                <img  src="ph/photo4.jpg" class="item active">
                 <img src="ph/photo5.jpg" class="item right">
-                <img src="ph/photo6.jpg" class="item right">
-                <img src="ph/photo7.jpg" class="item right">
-                <img src="ph/photo8.jpg" class="item right">
+                <img  src="ph/photo6.jpg" class="item right">
+                <img  src="ph/photo7.jpg" class="item right">
+                <img  src="ph/photo8.jpg" class="item right">
         </div>
     </div>
     <div>
