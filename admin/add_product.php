@@ -6,7 +6,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     exit();
 }
 // -----------------------------------------------------------------
-
+//new comment
 require_once 'connect.php'; 
 
 $categories = $conn->query("SELECT id, name FROM categories");
