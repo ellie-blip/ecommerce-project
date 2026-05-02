@@ -1,7 +1,7 @@
 <?php
-    $servername = "127.0.0.1:3308"; //127.0.0.1:3308
+    $servername = "localhost"; //127.0.0.1:3308
     $user = "root";
-    $password = "MyNewPassword";
+    $password ="";
     $dbname = "maison_elegance";
 
     $conn = mysqli_connect($servername, $user, $password, $dbname);
