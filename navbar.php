@@ -32,10 +32,10 @@ if (session_status() === PHP_SESSION_NONE) {
                 </span>
 
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                    <a href="admin/products.php" class="admin-link">Espace Administration</a>
+                    <a href="admin/dashboard.php" class="admin-link">Admin</a>
                 <?php endif; ?>
 
-                <a href="logout.php" class="logout-link">Quitter l’Espace</a>
+                <a href="logout.php" class="logout-link">Deconnexion</a>
             <?php else: ?>
                 <a href="login.php" class="login-link">Accès Membre</a>
                 <a href="register.php" class="register-link">Devenir Membre</a>
