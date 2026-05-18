@@ -8,7 +8,8 @@
  <style>
    
     body { 
-            background-color: #b7cbdf;
+         background: linear-gradient(135deg, #ebf2f8 0%, #f8f0e3 100%);
+            
             font-family: sans-serif;
         }
       
@@ -68,33 +69,37 @@
             z-index: 1;
         }
     .start {
-    /* CHANGED: Let the padding control the size instead of a strict 10% width */
-    width: max-content; 
-    
-    padding: 20px 60px;
-    background-color: #03033d;
-    color: #f1f3f8;
-    border-radius: 30px;
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    cursor: pointer;
-    font-family: Georgia, 'Times New Roman', serif;
-    display: block;
-    margin-top: 40px;
-    margin-left: auto;
-    margin-right: auto;
-    text-decoration: none;  
-    text-align: center;     
-}
+        width: 10%;
+        padding: 20px 60px;
+        background-color:  #03033d;
+        color: #f1f3f8;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        cursor: pointer;
+        font-family: Georgia, 'Times New Roman', serif;
+        display: flex;
+        border-radius: 25px;
+        transition: all 0.3s;
+        margin-top:40px;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center;    
+        text-align: center;
+            
+    }
+   
+
     .start:hover{
-        color:  #4789d3;
+        color:  #468ad8;
         font-weight: bold;
         font-size: 20px;
     }
     .s {
         outline-width: 100px;
-        color: #f3f0eb;
+        color: #03033d;
         text-decoration: none;
         font-size: 50px;
         font-weight: bold;
@@ -136,7 +141,7 @@ une tranquillité totale dès le premier jour. </p>
          <h2 align="center" class="g">  < Parcourez notre collection dès maintenant et commencez votre voyage > </h2>
     </div>
     <div>
-     <a class="start" href="index.php" >start</a>
+     <a class="start" href="index.php" > start </a>
    
      </div>
     <script>
