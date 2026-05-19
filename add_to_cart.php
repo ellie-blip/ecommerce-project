@@ -5,19 +5,18 @@ if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
 }
 
-// Check if an ID was sent in the URL
 if (isset($_GET['id'])) {
     $id = (int)$_GET['id'];
     
     if (isset($_SESSION['cart'][$id])) {
-        $_SESSION['cart'][$id]++; // Add another one
+        $_SESSION['cart'][$id]++;
     } else {
-        $_SESSION['cart'][$id] = 1; // First time adding this product
+        $_SESSION['cart'][$id] = 1;
     }
 }
 
-// ⚠️ TEAMMATE CHECK: Redirect back to Mariem's homepage. 
-// Change 'index.php' if her storefront file is named differently.
-header("Location: index.php"); 
+// SMART REDIRECT: Go back to the previous page, or index.php if referer is missing
+$redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
+header("Location: " . $redirect); 
 exit;
 ?>

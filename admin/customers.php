@@ -1,9 +1,16 @@
 <?php
+// Ensure only admins can access
 include '../auth_admin.php';
-include '../connect.php';
+
+// UNIVERSAL PATH FIX: Finds connect.php in the parent directory
+require_once dirname(__DIR__) . '/connect.php';
 
 $sql = "SELECT id, name, email, phone, address, role FROM users ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);
+
+if (!$result) {
+    die("Query failed: " . mysqli_error($conn));
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,9 +28,7 @@ $result = mysqli_query($conn, $sql);
     <div class="admin-header">
         <span class="auth-label">Espace Administration</span>
         <h2>Gestion des clients</h2>
-        <p>
-            Consultez la liste des membres inscrits sur la plateforme Maison Élégance.
-        </p>
+        <p>Consultez la liste des membres inscrits sur la plateforme Maison Élégance.</p>
     </div>
 
     <div class="admin-table-box">
@@ -34,26 +39,23 @@ $result = mysqli_query($conn, $sql);
                     <th>Nom complet</th>
                     <th>Email</th>
                     <th>Téléphone</th>
-                    <th>Adresse</th>
                     <th>Rôle</th>
                 </tr>
             </thead>
-
             <tbody>
                 <?php if (mysqli_num_rows($result) > 0): ?>
                     <?php while ($row = mysqli_fetch_assoc($result)): ?>
                         <tr>
-                            <td><?php echo $row['id']; ?></td>
+                            <td>#<?php echo $row['id']; ?></td>
                             <td><?php echo htmlspecialchars($row['name']); ?></td>
                             <td><?php echo htmlspecialchars($row['email']); ?></td>
                             <td><?php echo htmlspecialchars($row['phone']); ?></td>
-                            <td><?php echo htmlspecialchars($row['address']); ?></td>
-                            <td><?php echo htmlspecialchars($row['role']); ?></td>
+                            <td><span class="status-badge"><?php echo htmlspecialchars($row['role']); ?></span></td>
                         </tr>
                     <?php endwhile; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="6">Aucun client inscrit pour le moment.</td>
+                        <td colspan="5" style="text-align:center;">Aucun client inscrit.</td>
                     </tr>
                 <?php endif; ?>
             </tbody>
@@ -62,6 +64,5 @@ $result = mysqli_query($conn, $sql);
 </section>
 
 <?php include '../footer.php'; ?>
-
 </body>
 </html>

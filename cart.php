@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'connect.php'; 
+require_once 'connect.php';
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
@@ -8,70 +8,83 @@ if (!isset($_SESSION['cart'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Shopping Cart</title>
-    <link rel="stylesheet" href="style.css"> 
+    <title>Ma Sélection - Maison Élégance</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <?php include 'navbar.php'; ?>
     
-    <div style="padding: 20px;">
-        <h2>Your Shopping Cart</h2>
-        
-        <table border="1" cellpadding="10" style="border-collapse: collapse; width: 80%;">
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $grand_total = 0;
+    <section class="admin-section">
+        <div class="admin-header">
+            <span class="auth-label">Votre Panier</span>
+            <h2>Ma Sélection Automobile</h2>
+            <p>Retrouvez ici les modèles d'exception que vous avez sélectionnés.</p>
+        </div>
 
-                if (empty($_SESSION['cart'])) {
-                    echo "<tr><td colspan='5' style='text-align: center;'>Your cart is empty.</td></tr>";
-                } else {
-                    foreach ($_SESSION['cart'] as $id => $quantity) {
-                        
-                        // ⚠️ TEAMMATE CHECK: Verify table name ('products') and columns ('name', 'price')
-                        $query = "SELECT name, price FROM products WHERE id = $id";
-                        $result = mysqli_query($conn, $query);
-                        
-                        if ($result && mysqli_num_rows($result) > 0) {
-                            $product = mysqli_fetch_assoc($result);
-                            $name = $product['name'];
-                            $price = $product['price'];
+        <div class="admin-table-box">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Modèle</th>
+                        <th>Prix Unitaire</th>
+                        <th>Quantité</th>
+                        <th>Sous-total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $grand_total = 0;
+
+                    if (empty($_SESSION['cart'])) {
+                        echo "<tr><td colspan='5' style='text-align: center; padding: 50px;'>Votre sélection est actuellement vide.</td></tr>";
+                    } else {
+                        foreach ($_SESSION['cart'] as $id => $quantity) {
+                            $id = (int)$id;
+                            $query = "SELECT name, price, image FROM products WHERE id = $id";
+                            $result = mysqli_query($conn, $query);
                             
-                            $subtotal = $price * $quantity;
-                            $grand_total += $subtotal; 
-
-                            echo "<tr>
-                                <td>{$name}</td>
-                                <td>\${$price}</td>
-                                <td>{$quantity}</td>
-                                <td>\${$subtotal}</td>
-                                <td><a href='remove_from_cart.php?id={$id}' style='color: red;'>Remove</a></td>
-                            </tr>";
+                            if ($product = mysqli_fetch_assoc($result)) {
+                                $subtotal = $product['price'] * $quantity;
+                                $grand_total += $subtotal;
+                                ?>
+                                <tr>
+                                    <td style="display: flex; align-items: center; gap: 15px;">
+                                        <img src="images/<?php echo $product['image']; ?>" width="80" style="border-radius: 5px;">
+                                        <strong><?php echo htmlspecialchars($product['name']); ?></strong>
+                                    </td>
+                                    <td><?php echo number_format($product['price'], 0, ',', ' '); ?> €</td>
+                                    <td><?php echo $quantity; ?></td>
+                                    <td style="font-weight: bold; color: var(--gold);"><?php echo number_format($subtotal, 0, ',', ' '); ?> €</td>
+                                    <td>
+                                        <a href="remove_from_cart.php?id=<?php echo $id; ?>" style="color: #c0392b; text-decoration: none; font-size: 0.9em;">Supprimer</a>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
                         }
                     }
-                }
-                ?>
-            </tbody>
-        </table>
-
-        <h3>Grand Total: $<?php echo number_format($grand_total, 2); ?></h3>
+                    ?>
+                </tbody>
+            </table>
+        </div>
 
         <?php if (!empty($_SESSION['cart'])): ?>
-            <form action="checkout.php" method="POST">
-                <button type="submit" name="checkout" style="padding: 10px 20px; cursor: pointer;">Proceed to Checkout</button>
-            </form>
+            <div style="margin-top: 30px; text-align: right; border-top: 1px solid #ddd; padding-top: 20px;">
+                <h3 style="font-size: 24px; color: var(--dark);">Total : <span style="color: var(--gold);"><?php echo number_format($grand_total, 0, ',', ' '); ?> €</span></h3>
+                <br>
+                <a href="checkout.php" class="auth-btn" style="text-decoration: none; display: inline-block;">Procéder au paiement</a>
+            </div>
+        <?php else: ?>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="cars.php" class="auth-btn" style="text-decoration: none; display: inline-block;">Voir la collection</a>
+            </div>
         <?php endif; ?>
-    </div>
+    </section>
+
+    <?php include 'footer.php'; ?>
 </body>
 </html>
