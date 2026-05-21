@@ -16,7 +16,7 @@ if (!isset($_SESSION['cart'])) {
 </head>
 <body>
     <?php include 'navbar.php'; ?>
-    
+
     <section class="admin-section">
         <div class="admin-header">
             <span class="auth-label">Votre Panier</span>
@@ -46,21 +46,27 @@ if (!isset($_SESSION['cart'])) {
                             $id = (int)$id;
                             $query = "SELECT name, price, image FROM products WHERE id = $id";
                             $result = mysqli_query($conn, $query);
-                            
+
                             if ($product = mysqli_fetch_assoc($result)) {
                                 $subtotal = $product['price'] * $quantity;
                                 $grand_total += $subtotal;
                                 ?>
                                 <tr>
                                     <td style="display: flex; align-items: center; gap: 15px;">
-                                        <img src="images/<?php echo $product['image']; ?>" width="80" style="border-radius: 5px;">
+                                        <img src="photo/<?php echo htmlspecialchars($product['image']); ?>" 
+                                             width="80" style="border-radius: 5px;">
                                         <strong><?php echo htmlspecialchars($product['name']); ?></strong>
                                     </td>
                                     <td><?php echo number_format($product['price'], 0, ',', ' '); ?> €</td>
                                     <td><?php echo $quantity; ?></td>
-                                    <td style="font-weight: bold; color: var(--gold);"><?php echo number_format($subtotal, 0, ',', ' '); ?> €</td>
+                                    <td style="font-weight: bold; color: var(--gold);">
+                                        <?php echo number_format($subtotal, 0, ',', ' '); ?> €
+                                    </td>
                                     <td>
-                                        <a href="remove_from_cart.php?id=<?php echo $id; ?>" style="color: #c0392b; text-decoration: none; font-size: 0.9em;">Supprimer</a>
+                                        <a href="remove_from_cart.php?id=<?php echo $id; ?>" 
+                                           style="color: #c0392b; text-decoration: none; font-size: 0.9em;">
+                                            Supprimer
+                                        </a>
                                     </td>
                                 </tr>
                                 <?php
@@ -73,14 +79,20 @@ if (!isset($_SESSION['cart'])) {
         </div>
 
         <?php if (!empty($_SESSION['cart'])): ?>
-            <div style="margin-top: 30px; text-align: right; border-top: 1px solid #ddd; padding-top: 20px;">
-                <h3 style="font-size: 24px; color: var(--dark);">Total : <span style="color: var(--gold);"><?php echo number_format($grand_total, 0, ',', ' '); ?> €</span></h3>
+            <div style="margin-top: 30px; text-align: center; border-top: 1px solid #ddd; padding-top: 20px;">
+                <h3 style="font-size: 24px; color: var(--dark);">
+                    Total : <span style="color: var(--gold);"><?php echo number_format($grand_total, 0, ',', ' '); ?> €</span>
+                </h3>
                 <br>
-                <a href="checkout.php" class="auth-btn" style="text-decoration: none; display: inline-block;">Procéder au paiement</a>
+                <a href="checkout.php" class="auth-btn" style="text-decoration: none; display: inline-block;">
+                    Procéder au paiement
+                </a>
             </div>
         <?php else: ?>
             <div style="text-align: center; margin-top: 20px;">
-                <a href="cars.php" class="auth-btn" style="text-decoration: none; display: inline-block;">Voir la collection</a>
+                <a href="cars.php" class="auth-btn" style="text-decoration: none; display: inline-block;">
+                    Voir la collection
+                </a>
             </div>
         <?php endif; ?>
     </section>

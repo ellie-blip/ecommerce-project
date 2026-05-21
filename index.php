@@ -2,58 +2,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
+    
     <title>Document</title>
 </head>
+ <style>
+   
+    body { 
+         background: linear-gradient(135deg, #ebf2f8 0%, #f8f0e3 100%);
+            
+            font-family: sans-serif;
+        }
+      
+    .carousel-container {
+            margin-top: 100px; 
+            perspective: 1000px;     
+            perspective: 1200px; 
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1200px;
+        }
+    .carousel-fan {
+            position: relative;
+            width: 580px;
+            height: 780px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+        }
+       
+     .item {
+            position: absolute;
+            width: 400px;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            cursor: pointer;
+           
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
+     .item.active {
+            transform: translateZ(200px); 
+            z-index: 10;
+            opacity: 1;
+        }
+
+    .item.left {
+            transform: translateX(-250px) translateZ(-150px) rotateY(30deg);
+            z-index: 5;
+            opacity: 0.6;
+        }
+
+   .item.right {
+            transform: translateX(250px) translateZ(-150px) rotateY(-30deg);
+            z-index: 5;
+            opacity: 0.6;
+        }
+
+    .item.hidden {
+            transform: translateZ(-500px);
+            opacity: 0;
+            z-index: 1;
+        }
+    .start {
+        width: 10%;
+        padding: 20px 60px;
+        background-color:  #03033d;
+        color: #f1f3f8;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        cursor: pointer;
+        font-family: Georgia, 'Times New Roman', serif;
+        display: flex;
+        border-radius: 25px;
+        transition: all 0.3s;
+        margin-top:40px;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center;    
+        text-align: center;
+            
+    }
+   
+
+    .start:hover{
+        color:  #468ad8;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .s {
+        outline-width: 100px;
+        color: #03033d;
+        text-decoration: none;
+        font-size: 50px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase ;
+        white-space: nowrap;
+        margin-top:30px;
+        font-family: Georgia, 'Times New Roman', serif;
+    }
+   .g{
+        margin-top: 100px;
+     font-family: Georgia, 'Times New Roman', serif;
+   }
+   .a{
+     font-family: Georgia, 'Times New Roman', serif;
+   }
+    </style>
+</head>
 <body>
-   <section class="categories-section">
-        <div class="section-title">
-            <h2>L'art de l'automobile</h2>
-            <p>
-                Trois collections pensées pour une clientèle exigeante : élégance quotidienne,
-                performance affirmée et héritage d’exception.
-            </p>
+<h1 class="s" align="center">bienvenue à Maison Élégance  </h1>
+    <h2 class="a" align="center">  Votre prochaine voiture vous attend ici ! </h2>
+      <p  class="a" align="center">  Nous ne vendons pas seulement des voitures - nous réalisons votre passion avec qualité, 
+transparence et des garanties qui vous assurent 
+une tranquillité totale dès le premier jour. </p>
+        
+    <div class="carousel-container">
+        <div class="carousel-fan" >
+                <img  src="ph/photo1.jpg" class="item left">
+                <img  src="ph/photo2.jpg" class="item left">
+                <img  src="ph/photo3.jpg" class="item left">
+                <img  src="ph/photo4.jpg" class="item active">
+                <img src="ph/photo5.jpg" class="item right">
+                <img  src="ph/photo6.jpg" class="item right">
+                <img  src="ph/photo7.jpg" class="item right">
+                <img  src="ph/photo8.jpg" class="item right">
         </div>
+    </div>
+    <div>
+         <h2 align="center" class="g">  < Parcourez notre collection dès maintenant et commencez votre voyage > </h2>
+    </div>
+    <div>
+     <a class="start" href="index.php" > start </a>
+   
+     </div>
+    <script>
+        const items = document.querySelectorAll('.item');
 
-        <div class="category-line">
-            <div class="category-image normal-image"></div>
-            <div class="category-text">
-                <h3>Normal</h3>
-                <p>
-                    Des modèles raffinés, confortables et intemporels, conçus pour accompagner
-                    chaque déplacement avec distinction.
-                </p>
-                <a href="cars.php?category=normal">Découvrir</a>
-            </div>
-        </div>
+        items.forEach((item, index) => {
+           
+            item.addEventListener('click', () => {
+                moveCarousel(index);
+            });
+        });
 
-        <div class="category-line reverse">
-            <div class="category-image sport-image"></div>
-            <div class="category-text">
-                <h3>Sport</h3>
-                <p>
-                    Une sélection de véhicules puissants et racés, destinés aux passionnés
-                    de sensations maîtrisées.
-                </p>
-                <a href="cars.php?category=sport">Découvrir</a>
-            </div>
-        </div>
+        function moveCarousel(clickedIndex) {
+            items.forEach((item, index) => {
+              
+                item.classList.remove('active', 'left', 'right', 'hidden');
 
-        <div class="category-line">
-            <div class="category-image collection-image"></div>
-            <div class="category-text">
-                <h3>La Collection</h3>
-                <p>
-                    Des automobiles rares, chargées d’histoire, choisies pour leur caractère
-                    et leur valeur patrimoniale.
-                </p>
-                <a href="cars.php?category=collection">Découvrir</a>
-            </div>
-        </div>
-    </section>
-    
-    
-<?php include 'footer.php'; ?>
+                if (index === clickedIndex) {
+                    item.classList.add('active'); 
+                } else if (index === (clickedIndex - 1 + items.length) % items.length) {
+                    item.classList.add('left'); 
+                } else {
+                    item.classList.add('right'); 
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>

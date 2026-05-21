@@ -39,3 +39,4 @@ if (session_status() === PHP_SESSION_NONE) {
         <?php endif; ?>
     </div>
 </nav>
+<?php include_once (strpos(__FILE__, "admin") !== false ? dirname(__DIR__) : __DIR__) . "/cart_sidebar.php"; ?>

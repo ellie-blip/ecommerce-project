@@ -2,7 +2,7 @@
     $servername = "127.0.0.1:3308"; //
     $user = "root";
     $password = "MyNewPassword";
-    $dbname = "me";
+    $dbname = "maison_elegance";
 
     $conn = mysqli_connect($servername, $user, $password, $dbname);
 

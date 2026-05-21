@@ -15,8 +15,8 @@ if (isset($_GET['id'])) {
     }
 }
 
-// SMART REDIRECT: Go back to the previous page, or index.php if referer is missing
+// Redirect back to previous page, or index.php as fallback
 $redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
-header("Location: " . $redirect); 
+header("Location: " . $redirect);
 exit;
 ?>
